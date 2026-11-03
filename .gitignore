@@ -42,3 +42,6 @@ venv/
 
 # Local backups
 *.zip
+
+# Vercel local configuration
+.vercel/

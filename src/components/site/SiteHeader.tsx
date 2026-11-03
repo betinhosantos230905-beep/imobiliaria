@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+﻿import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { BRAND } from "@/lib/properties";
@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo-sf-imoveis.jpg";
 
 const links = [
-  { to: "/", label: "Início" },
-  { to: "/imoveis", label: "Imóveis" },
+  { to: "/", label: "InÃ­cio" },
+  { to: "/imoveis", label: "ImÃ³veis" },
   { to: "/sobre", label: "Sobre" },
   { to: "/contato", label: "Contato" },
 ] as const;
@@ -18,9 +18,9 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="SF Imóveis" className="size-11 rounded-full" />
-          <span className="leading-none"><span className="font-display text-2xl font-semibold text-primary">SF Imóveis</span>
-          <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">e Assessoria Jurídica</span></span>
+          <img src={logo} alt="SF ImÃ³veis" className="size-11 rounded-full" />
+          <span className="leading-none"><span className="font-display text-2xl font-semibold text-primary">SF ImÃ³veis</span>
+          <span className="block text-[10px] uppercase tracking-[0.2em] text-gold">e Assessoria JurÃ­dica</span></span>
         </Link>
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((l) => (
@@ -29,7 +29,7 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
-          <Button asChild variant="gold" size="sm"><Link to="/admin">Área do cliente</Link></Button>
+          <Button asChild variant="gold" size="sm"><Link to="/admin">ÃÁrea Administrativa</Link></Button>
         </nav>
         <button className="md:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>
           {open ? <X /> : <Menu />}
@@ -42,7 +42,7 @@ export function SiteHeader() {
               {l.label}
             </Link>
           ))}
-          <Button asChild variant="gold" className="mt-2"><Link to="/admin" onClick={() => setOpen(false)}>Área do cliente</Link></Button>
+          <Button asChild variant="gold" className="mt-2"><Link to="/admin" onClick={() => setOpen(false)}>ÃÁrea Administrativa</Link></Button>
         </nav>
       )}
     </header>
@@ -55,7 +55,7 @@ export function SiteFooter() {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-3">
         <div>
           <p className="font-display text-3xl">{BRAND.full}</p>
-          <p className="mt-3 text-sm text-primary-foreground/70">Aluguel, venda e assessoria jurídica em Vassouras e região.</p>
+          <p className="mt-3 text-sm text-primary-foreground/70">Aluguel, venda e assessoria jurÃ­dica em Vassouras e regiÃ£o.</p>
         </div>
         <div className="text-sm text-primary-foreground/80 space-y-1">
           <p className="text-gold uppercase tracking-widest text-xs mb-3">Contato</p>
@@ -63,11 +63,11 @@ export function SiteFooter() {
         </div>
         <div className="text-sm text-primary-foreground/80 space-y-1">
           <p className="text-gold uppercase tracking-widest text-xs mb-3">Navegue</p>
-          <p><Link to="/imoveis">Imóveis</Link></p><p><Link to="/sobre">Sobre</Link></p><p><Link to="/contato">Contato</Link></p>
+          <p><Link to="/imoveis">ImÃ³veis</Link></p><p><Link to="/sobre">Sobre</Link></p><p><Link to="/contato">Contato</Link></p>
         </div>
       </div>
       <p className="border-t border-primary-foreground/10 py-5 text-center text-xs text-primary-foreground/60">
-        © {new Date().getFullYear()} {BRAND.full} · {BRAND.creci}
+        Â© {new Date().getFullYear()} {BRAND.full} Â· {BRAND.creci}
       </p>
     </footer>
   );
