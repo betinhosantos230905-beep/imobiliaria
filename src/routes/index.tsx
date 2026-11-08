@@ -1,19 +1,35 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+﻿import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { Search, Scale, KeyRound, Store, Building, ArrowUpRight, MessageCircle } from "lucide-react";
+import {
+  Search,
+  Scale,
+  KeyRound,
+  Store,
+  Building,
+  ArrowUpRight,
+  MessageCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PropertyCard } from "@/components/site/PropertyCard";
 import { BRAND, featuredQuery, propertiesQuery } from "@/lib/properties";
-import logo from "@/assets/logo-sf-imoveis.jpg";
+import heroImage from "@/assets/hero-sf.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "SF Imóveis — Aluguel e venda em Vassouras/RJ" },
-      { name: "description", content: "Apartamentos, casas e lojas para alugar e comprar em Vassouras, com assessoria jurídica. CRECI J 7284." },
+      {
+        name: "description",
+        content:
+          "Apartamentos, casas e lojas para alugar e comprar em Vassouras, com assessoria jurídica. CRECI J 7284.",
+      },
       { property: "og:title", content: "SF Imóveis e Assessoria Jurídica" },
-      { property: "og:description", content: "Aluguel e venda de imóveis em Vassouras/RJ com segurança jurídica." },
+      {
+        property: "og:description",
+        content:
+          "Aluguel e venda de imóveis em Vassouras/RJ com segurança jurídica.",
+      },
     ],
   }),
   component: Index,
@@ -25,126 +41,343 @@ function Index() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
   const [w, setW] = useState(0);
+
   const { data: featured = [] } = useQuery(featuredQuery);
   const { data: all = [] } = useQuery(propertiesQuery());
 
   useEffect(() => {
-    const t = setInterval(() => setW((i) => (i + 1) % WORDS.length), 2200);
+    const t = setInterval(() => {
+      setW((i) => (i + 1) % WORDS.length);
+    }, 2200);
+
     return () => clearInterval(t);
   }, []);
 
-  const count = (fn: (p: (typeof all)[number]) => boolean) => all.filter(fn).length;
+  const count = (fn: (p: (typeof all)[number]) => boolean) =>
+    all.filter(fn).length;
+
   const cats = [
-    { label: "Apartamentos", icon: Building, type: "apartamento", n: count((p) => p.type === "apartamento") },
-    { label: "Lojas e salas", icon: Store, type: "comercial", n: count((p) => p.type === "comercial") },
-    { label: "Casas", icon: KeyRound, type: "casa", n: count((p) => p.type === "casa") },
+    {
+      label: "Apartamentos",
+      icon: Building,
+      type: "apartamento",
+      n: count((p) => p.type === "apartamento"),
+    },
+    {
+      label: "Lojas e salas",
+      icon: Store,
+      type: "comercial",
+      n: count((p) => p.type === "comercial"),
+    },
+    {
+      label: "Casas",
+      icon: KeyRound,
+      type: "casa",
+      n: count((p) => p.type === "casa"),
+    },
   ];
-  const photos = featured.slice(0, 3).map((p) => p.images[0]).filter(Boolean);
-  const hoods = Array.from(new Set(all.map((p) => p.neighborhood).filter(Boolean)));
+
+  const hoods = Array.from(
+    new Set(all.map((p) => p.neighborhood).filter(Boolean)),
+  );
 
   return (
     <main>
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-primary text-primary-foreground">
-        <div className="pointer-events-none absolute -right-32 -top-32 size-[28rem] rounded-full border border-gold/30" />
-        <div className="pointer-events-none absolute -right-10 top-20 size-[18rem] rounded-full border border-gold/20" />
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-5 pb-20 pt-14 lg:grid-cols-[1.1fr_1fr] lg:items-center lg:pt-20">
-          <div>
-            <div className="animate-rise flex items-center gap-3">
-              <img src={logo} alt="" className="size-14 rounded-full ring-2 ring-gold/60" />
-              <span className="text-xs uppercase tracking-[0.3em] text-gold">{BRAND.creci} · Vassouras/RJ</span>
-            </div>
-            <h1 className="animate-rise mt-8 text-5xl leading-[0.95] sm:text-6xl md:text-7xl" style={{ animationDelay: ".1s" }}>
-              O imóvel certo para você{" "}
-              <span key={w} className="animate-rise inline-block italic text-gold">{WORDS[w]}</span>
-              <span className="text-gold">.</span>
-            </h1>
-            <p className="animate-rise mt-6 max-w-md text-lg text-primary-foreground/75" style={{ animationDelay: ".2s" }}>
-              Aluguel, venda e assessoria jurídica — tudo resolvido com a Silvia, sem complicação.
-            </p>
-            <form onSubmit={(e) => { e.preventDefault(); navigate({ to: "/imoveis", search: q ? { q } : {} }); }}
-              className="animate-rise mt-8 flex max-w-lg gap-2 rounded-full bg-card p-1.5 text-foreground shadow-card" style={{ animationDelay: ".3s" }}>
-              <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Busque por bairro: Centro, Tambasco…"
-                className="h-11 min-w-0 flex-1 rounded-full bg-transparent px-4 text-sm outline-none" />
-              <Button type="submit" variant="gold" className="h-11 rounded-full px-5"><Search /><span className="hidden sm:inline">Buscar</span></Button>
-            </form>
-            <div className="animate-rise mt-6 flex flex-wrap gap-3" style={{ animationDelay: ".4s" }}>
-              <Button asChild variant="glass" className="rounded-full">
-                <a href={`https://wa.me/${BRAND.whatsapp}`} target="_blank" rel="noreferrer"><MessageCircle /> Chamar no WhatsApp</a>
-              </Button>
-            </div>
-          </div>
+      {/* HERO PREMIUM */}
+      <section className="relative isolate flex min-h-[650px] items-center overflow-hidden bg-[#090909] text-white md:min-h-[720px]">
+        <div
+          className="absolute inset-0 -z-20 bg-cover bg-center"
+          style={{ backgroundImage: `url("${heroImage}")` }}
+          role="img"
+          aria-label="Imóvel em destaque da SF Imóveis"
+        />
 
-          <div className="relative mx-auto h-[360px] w-full max-w-md sm:h-[440px]">
-            {photos.map((src, i) => (
-              <div key={src} className="animate-rise absolute overflow-hidden rounded-2xl border-4 border-card shadow-card transition-transform duration-500 hover:z-10 hover:scale-105"
-                style={{
-                  animationDelay: `${0.3 + i * 0.15}s`,
-                  width: i === 0 ? "62%" : "48%", aspectRatio: "3/4",
-                  left: ["0%", "48%", "22%"][i], top: ["4%", "0%", "38%"][i],
-                  rotate: ["-6deg", "5deg", "-1deg"][i], zIndex: [1, 2, 3][i],
-                }}>
-                <img src={src} alt="" className="h-full w-full object-cover" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/80 to-black/35" />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/75 via-transparent to-black/20" />
+
+        <div className="pointer-events-none absolute right-[-130px] top-[-130px] -z-10 size-[420px] rounded-full border border-[#d4a937]/20" />
+        <div className="pointer-events-none absolute right-[-55px] top-[-55px] -z-10 size-[270px] rounded-full border border-[#d4a937]/15" />
+
+        <div className="sf-container w-full py-20 md:py-28">
+          <div className="max-w-3xl">
+            <div className="animate-rise mb-8 flex items-center gap-3">
+              <span className="h-px w-12 bg-[#d4a937]" />
+              <span className="text-xs font-semibold uppercase tracking-[0.28em] text-[#f2d57a]">
+                {BRAND.creci} · {BRAND.address}
+              </span>
+            </div>
+
+            <h1
+              className="sf-serif animate-rise max-w-3xl text-5xl font-medium leading-[1.08] tracking-tight sm:text-6xl md:text-7xl lg:text-[82px]"
+              style={{ animationDelay: ".1s" }}
+            >
+              O imóvel certo para você{" "}
+              <span
+                key={w}
+                className="inline-block italic text-[#e5bd55]"
+              >
+                {WORDS[w]}
+              </span>
+              <span className="text-[#e5bd55]">.</span>
+            </h1>
+
+            <p
+              className="animate-rise mt-7 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
+              style={{ animationDelay: ".2s" }}
+            >
+              Encontre seu próximo endereço com confiança. Aluguel, venda e
+              assessoria jurídica em Vassouras e região.
+            </p>
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate({
+                  to: "/imoveis",
+                  search: q ? { q } : {},
+                });
+              }}
+              className="animate-rise mt-9 flex max-w-2xl flex-col gap-2 rounded-2xl border border-white/15 bg-white/95 p-2 shadow-2xl sm:flex-row sm:items-center sm:rounded-full"
+              style={{ animationDelay: ".3s" }}
+            >
+              <div className="flex min-w-0 flex-1 items-center gap-3 px-4">
+                <Search className="size-5 shrink-0 text-[#a98225]" />
+                <input
+                  value={q}
+                  onChange={(e) => setQ(e.target.value)}
+                  placeholder="Digite um bairro, cidade ou imóvel..."
+                  className="h-12 min-w-0 flex-1 bg-transparent text-sm text-[#171717] outline-none placeholder:text-[#77736b]"
+                />
               </div>
-            ))}
-            <div className="absolute bottom-2 right-0 z-10 rounded-2xl bg-gold px-5 py-3 text-gold-foreground shadow-card">
-              <p className="font-display text-4xl leading-none">{all.length}</p>
-              <p className="text-xs uppercase tracking-wider">imóveis disponíveis</p>
+
+              <Button
+                type="submit"
+                variant="gold"
+                className="h-12 rounded-full px-8 font-semibold"
+              >
+                Buscar imóveis
+                <ArrowUpRight className="ml-1 size-4" />
+              </Button>
+            </form>
+
+            <div
+              className="animate-rise mt-6 flex flex-wrap items-center gap-4"
+              style={{ animationDelay: ".4s" }}
+            >
+              <Button
+                asChild
+                className="h-12 rounded-full border border-[#d4a937] bg-[#d4a937] px-6 font-semibold text-[#111] shadow-lg transition-all hover:-translate-y-1 hover:bg-[#edca6c]"
+              >
+                <a
+                  href={`https://wa.me/${BRAND.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle className="mr-2 size-4" />
+                  Fale com a Silvia
+                </a>
+              </Button>
+
+              <Link
+                to="/imoveis"
+                className="inline-flex items-center gap-2 px-2 py-3 text-sm font-medium text-white/85 transition-colors hover:text-[#f2d57a]"
+              >
+                Explorar imóveis
+                <ArrowUpRight className="size-4" />
+              </Link>
+            </div>
+
+            <div className="animate-rise mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/20 pt-6" style={{ animationDelay: ".5s" }}>
+              <div>
+                <p className="sf-serif text-3xl text-[#f2d57a]">
+                  {all.length}
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-white/60">
+                  Imóveis cadastrados
+                </p>
+              </div>
+              <div className="hidden h-12 w-px bg-white/20 sm:block" />
+              <div>
+                <p className="sf-serif text-3xl text-[#f2d57a]">
+                  {hoods.length}
+                </p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-white/60">
+                  Bairros e regiões
+                </p>
+              </div>
+              <div className="hidden h-12 w-px bg-white/20 sm:block" />
+              <div>
+                <p className="sf-serif text-3xl text-[#f2d57a]">100%</p>
+                <p className="text-[10px] uppercase tracking-[0.18em] text-white/60">
+                  Atenção personalizada
+                </p>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* marquee */}
-        {hoods.length > 0 && (
-          <div className="relative overflow-hidden border-t border-primary-foreground/10 py-4">
-            <div className="flex w-max animate-marquee gap-10 whitespace-nowrap font-display text-2xl text-primary-foreground/60">
-              {[...hoods, ...hoods, ...hoods, ...hoods].map((h, i) => (
-                <span key={i} className="flex items-center gap-10">{h}<span className="text-gold">✦</span></span>
-              ))}
-            </div>
-          </div>
-        )}
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/60 to-transparent" />
       </section>
 
-      {/* CATEGORIES */}
-      <section className="mx-auto -mt-px max-w-7xl px-5 pt-14">
+      {/* MARQUEE DE REGIÕES */}
+      {hoods.length > 0 && (
+        <div className="overflow-hidden border-b border-[#d4a937]/20 bg-[#101010] py-4">
+          <div className="flex w-max animate-marquee gap-10 whitespace-nowrap sf-serif text-xl text-white/65">
+            {[...hoods, ...hoods, ...hoods, ...hoods].map((h, i) => (
+              <span key={i} className="flex items-center gap-10">
+                {h}
+                <span className="text-[#d4a937]">✦</span>
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* CATEGORIAS */}
+      <section className="sf-container py-16 md:py-20">
+        <div className="mb-8">
+          <p className="sf-eyebrow">Encontre o que procura</p>
+          <h2 className="sf-serif mt-3 text-4xl text-[#171717] md:text-5xl">
+            Explore por <span className="italic text-[#b68b2c]">categoria</span>
+          </h2>
+        </div>
+
         <div className="grid gap-4 sm:grid-cols-3">
           {cats.map(({ label, icon: Icon, type, n }) => (
-            <Link key={type} to="/imoveis" search={{ type }}
-              className="group flex items-center justify-between rounded-2xl border bg-card p-6 transition-all hover:-translate-y-1 hover:border-gold hover:shadow-card">
+            <Link
+              key={type}
+              to="/imoveis"
+              search={{ type }}
+              className="group flex items-center justify-between rounded-2xl border border-[#e5ddce] bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#d4a937] hover:shadow-xl"
+            >
               <div className="flex items-center gap-4">
-                <span className="grid size-12 place-items-center rounded-xl bg-secondary text-primary transition-colors group-hover:bg-gold group-hover:text-gold-foreground"><Icon /></span>
-                <div><p className="font-display text-2xl text-primary">{label}</p><p className="text-sm text-muted-foreground">{n} disponíve{n === 1 ? "l" : "is"}</p></div>
+                <span className="grid size-12 place-items-center rounded-xl bg-[#f4eddd] text-[#a98225] transition-colors group-hover:bg-[#d4a937] group-hover:text-[#111]">
+                  <Icon />
+                </span>
+                <div>
+                  <p className="sf-serif text-2xl text-[#171717]">{label}</p>
+                  <p className="text-sm text-[#77736b]">
+                    {n} disponível{n === 1 ? "" : "is"}
+                  </p>
+                </div>
               </div>
-              <ArrowUpRight className="text-muted-foreground transition-transform group-hover:rotate-45 group-hover:text-gold" />
+              <ArrowUpRight className="text-[#a98225] transition-transform group-hover:rotate-45" />
             </Link>
           ))}
         </div>
       </section>
 
-      {/* FEATURED */}
-      <section className="mx-auto max-w-7xl px-5 py-16">
-        <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-4xl text-primary md:text-5xl">Disponíveis <span className="italic text-gold">agora</span></h2>
-          <Button asChild variant="outline" className="rounded-full"><Link to="/imoveis">Ver todos <ArrowUpRight /></Link></Button>
-        </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {featured.map((p, i) => (
-            <div key={p.id} className="animate-rise" style={{ animationDelay: `${i * 0.08}s` }}><PropertyCard p={p} /></div>
-          ))}
+      {/* IMÓVEIS EM DESTAQUE */}
+      <section className="bg-[#f1eadb] py-16 md:py-20">
+        <div className="sf-container">
+          <div className="flex flex-wrap items-end justify-between gap-5">
+            <div>
+              <p className="sf-eyebrow">Oportunidades selecionadas</p>
+              <h2 className="sf-serif mt-3 text-4xl text-[#171717] md:text-5xl">
+                Imóveis em{" "}
+                <span className="italic text-[#b68b2c]">destaque</span>
+              </h2>
+            </div>
+
+            <Button
+              asChild
+              variant="outline"
+              className="rounded-full border-[#b68b2c] bg-transparent text-[#171717] hover:bg-[#d4a937] hover:text-[#111]"
+            >
+              <Link to="/imoveis">
+                Ver todos os imóveis
+                <ArrowUpRight className="ml-1 size-4" />
+              </Link>
+            </Button>
+          </div>
+
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {featured.map((p, i) => (
+              <div
+                key={p.id}
+                className="animate-rise"
+                style={{ animationDelay: `${i * 0.08}s` }}
+              >
+                <PropertyCard p={p} />
+              </div>
+            ))}
+          </div>
+
+          {featured.length === 0 && (
+            <div className="mt-10 rounded-2xl border border-[#d4a937]/30 bg-white/70 px-6 py-12 text-center">
+              <p className="sf-serif text-2xl text-[#171717]">
+                Novas oportunidades em breve
+              </p>
+              <p className="mt-2 text-sm text-[#77736b]">
+                Entre em contato para conhecer os imóveis disponíveis.
+              </p>
+              <Button
+                asChild
+                variant="gold"
+                className="mt-5 rounded-full"
+              >
+                <a
+                  href={`https://wa.me/${BRAND.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <MessageCircle className="mr-2 size-4" />
+                  Falar com a imobiliária
+                </a>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
-      {/* JURIDICO */}
-      <section className="mx-auto max-w-7xl px-5">
-        <div className="relative overflow-hidden rounded-3xl bg-gold p-10 text-gold-foreground md:p-14">
-          <Scale className="absolute -right-6 -top-6 size-48 opacity-10" />
-          <p className="text-xs uppercase tracking-[0.3em]">Diferencial</p>
-          <h2 className="mt-3 max-w-2xl text-4xl md:text-5xl">Assessoria jurídica em cada negócio.</h2>
-          <p className="mt-4 max-w-xl opacity-80">Contratos, documentação e análise do imóvel feitos por quem entende — você assina com tranquilidade.</p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild className="rounded-full"><Link to="/contato">Quero anunciar meu imóvel</Link></Button>
-            <Button asChild variant="outline" className="rounded-full border-gold-foreground/30 bg-transparent"><a href={`https://instagram.com/${BRAND.instagram}`} target="_blank" rel="noreferrer">@{BRAND.instagram}</a></Button>
+      {/* ASSESSORIA JURÍDICA */}
+      <section className="sf-container py-16 md:py-20">
+        <div className="relative overflow-hidden rounded-3xl bg-[#101010] p-8 text-white shadow-2xl md:p-14">
+          <div className="pointer-events-none absolute -right-12 -top-12 size-72 rounded-full border border-[#d4a937]/20" />
+          <div className="pointer-events-none absolute -right-2 top-[-35px] size-52 rounded-full border border-[#d4a937]/15" />
+
+          <Scale className="absolute right-8 top-8 size-24 text-[#d4a937]/15 md:right-14 md:top-12 md:size-40" />
+
+          <div className="relative max-w-2xl">
+            <p className="sf-eyebrow text-[#e5bd55]">Um diferencial SF Imóveis</p>
+            <h2 className="sf-serif mt-4 text-4xl leading-tight md:text-5xl">
+              Segurança para negociar.
+              <span className="block italic text-[#e5bd55]">
+                Tranquilidade para conquistar.
+              </span>
+            </h2>
+
+            <p className="mt-5 max-w-xl leading-relaxed text-white/65">
+              Assessoria jurídica, contratos, documentação e análise do imóvel
+              para você realizar seu negócio com mais confiança.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button
+                asChild
+                variant="gold"
+                className="rounded-full px-6"
+              >
+                <Link to="/contato">
+                  Quero anunciar meu imóvel
+                  <ArrowUpRight className="ml-1 size-4" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                className="rounded-full border-white/25 bg-transparent text-white hover:border-[#d4a937] hover:bg-[#d4a937] hover:text-[#111]"
+              >
+                <a
+                  href={`https://instagram.com/${BRAND.instagram}`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @{BRAND.instagram}
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>

@@ -87,16 +87,19 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {!isAdmin && <SiteHeader />}
-      <Outlet />
-      {!isAdmin && <SiteFooter />}
-      {!isAdmin && (
-        <a href={`https://wa.me/${BRAND.whatsapp}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"
-          className="animate-pulse-ring fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-gold text-gold-foreground shadow-card">
-          <MessageCircle />
-        </a>
-      )}
-      <Toaster richColors />
+      <div className={!isAdmin ? "sf-public-theme min-h-screen" : undefined}>
+        {!isAdmin && <SiteHeader />}
+        <Outlet />
+        {!isAdmin && <SiteFooter />}
+        {!isAdmin && (
+          <a href={`https://wa.me/${BRAND.whatsapp}`} target="_blank" rel="noreferrer" aria-label="WhatsApp"
+            className="animate-pulse-ring fixed bottom-5 right-5 z-50 grid size-14 place-items-center rounded-full bg-gold text-gold-foreground shadow-card">
+            <MessageCircle />
+          </a>
+        )}
+        <Toaster richColors />
+      </div>
     </QueryClientProvider>
   );
 }
+
