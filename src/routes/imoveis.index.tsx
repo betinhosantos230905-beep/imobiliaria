@@ -19,10 +19,10 @@ export const Route = createFileRoute("/imoveis/")({
   }),
   head: () => ({
     meta: [
-      { title: "Imóveis à venda e para alugar — SF Imóveis" },
-      { name: "description", content: "Veja todos os imóveis disponíveis: apartamentos, casas e lojas em Vassouras/RJ." },
-      { property: "og:title", content: "Imóveis — SF Imóveis" },
-      { property: "og:description", content: "Apartamentos, casas e lojas para aluguel e venda em Vassouras/RJ." },
+      { title: "Imóveis à venda e para alugar — Abbud Imóveis" },
+      { name: "description", content: "Veja imóveis disponíveis para venda e aluguel em Barra do Piraí/RJ." },
+      { property: "og:title", content: "Imóveis — Abbud Imóveis" },
+      { property: "og:description", content: "Apartamentos, casas e lojas para venda e aluguel em Barra do Piraí/RJ." },
     ],
   }),
   component: Listing,
@@ -55,7 +55,7 @@ function Listing() {
         <div className="pointer-events-none absolute -bottom-40 left-1/4 size-80 rounded-full bg-[#d4a937]/10 blur-3xl" />
 
         <div className="sf-container relative">
-          <p className="sf-eyebrow text-[#e1bd62]">SF IMÓVEIS · VASSOURAS / RJ</p>
+          <p className="sf-eyebrow text-[#e1bd62]">ABBUD IMÓVEIS · BARRA DO PIRAÍ / RJ</p>
           <h1 className="sf-serif mt-5 max-w-3xl text-5xl leading-[1.08] sm:text-6xl lg:text-7xl">
             Encontre o lugar
             <br />
@@ -206,3 +206,4 @@ function Listing() {
     </main>
   );
 }
+

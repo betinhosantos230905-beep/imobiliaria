@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import {
   Search,
-  Scale,
+  ShieldCheck,
   KeyRound,
   Store,
   Building,
@@ -18,17 +18,17 @@ import heroImage from "@/assets/hero-sf.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SF Imóveis — Aluguel e venda em Vassouras/RJ" },
+      { title: "Abbud Imóveis — Imóveis em Barra do Piraí/RJ" },
       {
         name: "description",
         content:
-          "Apartamentos, casas e lojas para alugar e comprar em Vassouras, com assessoria jurídica. CRECI J 7284.",
+          "Encontre casas, apartamentos e imóveis comerciais para comprar ou alugar em Barra do Piraí/RJ. Atendimento com Paulo Renato. CRECI 3764.",
       },
-      { property: "og:title", content: "SF Imóveis e Assessoria Jurídica" },
+      { property: "og:title", content: "Abbud Imóveis" },
       {
         property: "og:description",
         content:
-          "Aluguel e venda de imóveis em Vassouras/RJ com segurança jurídica.",
+          "Seu próximo imóvel em Barra do Piraí e região começa aqui.",
       },
     ],
   }),
@@ -89,7 +89,7 @@ function Index() {
           className="absolute inset-0 -z-20 bg-cover bg-center"
           style={{ backgroundImage: `url("${heroImage}")` }}
           role="img"
-          aria-label="Imóvel em destaque da SF Imóveis"
+          aria-label="Imóvel em destaque da Abbud Imóveis"
         />
 
         <div className="absolute inset-0 -z-10 bg-gradient-to-r from-black via-black/80 to-black/35" />
@@ -125,8 +125,8 @@ function Index() {
               className="animate-rise mt-7 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg"
               style={{ animationDelay: ".2s" }}
             >
-              Encontre seu próximo endereço com confiança. Aluguel, venda e
-              assessoria jurídica em Vassouras e região.
+              Encontre seu próximo endereço com confiança. Compra, venda e
+              aluguel de imóveis em Barra do Piraí e região.
             </p>
 
             <form
@@ -174,7 +174,7 @@ function Index() {
                   rel="noreferrer"
                 >
                   <MessageCircle className="mr-2 size-4" />
-                  Fale com a Silvia
+                  Fale com {BRAND.owner}
                 </a>
               </Button>
 
@@ -187,7 +187,10 @@ function Index() {
               </Link>
             </div>
 
-            <div className="animate-rise mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/20 pt-6" style={{ animationDelay: ".5s" }}>
+            <div
+              className="animate-rise mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/20 pt-6"
+              style={{ animationDelay: ".5s" }}
+            >
               <div>
                 <p className="sf-serif text-3xl text-[#f2d57a]">
                   {all.length}
@@ -330,26 +333,26 @@ function Index() {
         </div>
       </section>
 
-      {/* ASSESSORIA JURÍDICA */}
+      {/* ATENDIMENTO ABBUD IMÓVEIS */}
       <section className="sf-container py-16 md:py-20">
         <div className="relative overflow-hidden rounded-3xl bg-[#101010] p-8 text-white shadow-2xl md:p-14">
           <div className="pointer-events-none absolute -right-12 -top-12 size-72 rounded-full border border-[#d4a937]/20" />
           <div className="pointer-events-none absolute -right-2 top-[-35px] size-52 rounded-full border border-[#d4a937]/15" />
 
-          <Scale className="absolute right-8 top-8 size-24 text-[#d4a937]/15 md:right-14 md:top-12 md:size-40" />
+          <ShieldCheck className="absolute right-8 top-8 size-24 text-[#d4a937]/15 md:right-14 md:top-12 md:size-40" />
 
           <div className="relative max-w-2xl">
-            <p className="sf-eyebrow text-[#e5bd55]">Um diferencial SF Imóveis</p>
+            <p className="sf-eyebrow text-[#e5bd55]">Abbud Imóveis · CRECI 3764</p>
             <h2 className="sf-serif mt-4 text-4xl leading-tight md:text-5xl">
-              Segurança para negociar.
+              Uma boa escolha começa com confiança.
               <span className="block italic text-[#e5bd55]">
-                Tranquilidade para conquistar.
+                Conte com atendimento próximo.
               </span>
             </h2>
 
             <p className="mt-5 max-w-xl leading-relaxed text-white/65">
-              Assessoria jurídica, contratos, documentação e análise do imóvel
-              para você realizar seu negócio com mais confiança.
+              Paulo Renato acompanha você na busca pelo imóvel ideal, com
+              atenção às suas necessidades e clareza durante a negociação.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">

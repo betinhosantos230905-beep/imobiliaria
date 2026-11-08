@@ -9,15 +9,15 @@ import type { Property } from "./properties.server";
 export type { Property } from "./properties.server";
 
 export const BRAND = {
-  name: "SF Imóveis",
-  full: "SF Imóveis e Assessoria Jurídica",
-  owner: "Silvia Freire",
-  phone: "(24) 2471-3065",
-  whatsappLabel: "(24) 99263-6735",
-  whatsapp: "5524992636735",
-  instagram: "silviafreireimoveis",
-  address: "Vassouras/RJ",
-  creci: "CRECI nº J 7284",
+  name: "Abbud Imóveis",
+  full: "Abbud Imóveis",
+  owner: "Paulo Renato",
+  phone: "(24) 99999-1358",
+  whatsappLabel: "(24) 99999-1358",
+  whatsapp: "5524999991358",
+  instagram: "abbud.imoveis",
+  address: "Barra do Piraí/RJ",
+  creci: "CRECI 3764",
 };
 
 export function formatPrice(p: Property) {

@@ -22,9 +22,9 @@ export const Route = createFileRoute("/admin")({
   ssr: false,
   head: () => ({
     meta: [
-      { title: "Painel — SF Imóveis" },
+      { title: "Painel — Abbud Imóveis" },
       { name: "description", content: "Gerencie anúncios, fotos e mensagens." },
-      { property: "og:title", content: "Painel — SF Imóveis" },
+      { property: "og:title", content: "Painel — Abbud Imóveis" },
       { property: "og:description", content: "Área administrativa." },
       { name: "robots", content: "noindex" },
     ],
@@ -153,7 +153,7 @@ function Admin() {
     <div className="min-h-screen md:grid md:grid-cols-[240px_1fr]">
       <aside className="flex items-center justify-between bg-sidebar p-4 text-sidebar-foreground md:flex-col md:items-stretch md:justify-start md:gap-8 md:p-6">
         <p className="font-display text-2xl">
-          SF Imóveis{" "}
+          Abbud Imóveis{" "}
           <span className="block text-xs uppercase tracking-widest text-sidebar-primary">
             Painel
           </span>
@@ -365,4 +365,5 @@ function Admin() {
     </div>
   );
 }
+
 

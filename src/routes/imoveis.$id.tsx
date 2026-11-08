@@ -21,9 +21,9 @@ import { BRAND, formatPrice, propertyQuery } from "@/lib/properties";
 export const Route = createFileRoute("/imoveis/$id")({
   head: () => ({
     meta: [
-      { title: "Detalhes do imóvel — SF Imóveis" },
+      { title: "Detalhes do imóvel — Abbud Imóveis" },
       { name: "description", content: "Fotos, características e contato para este imóvel." },
-      { property: "og:title", content: "Imóvel — SF Imóveis" },
+      { property: "og:title", content: "Imóvel — Abbud Imóveis" },
       { property: "og:description", content: "Fotos, características e contato para este imóvel." },
     ],
   }),
@@ -214,7 +214,7 @@ function Detail() {
 
           <aside className="h-fit rounded-2xl border border-[#e5ddce] bg-white p-5 shadow-[0_15px_45px_rgba(0,0,0,0.08)] sm:p-7 lg:sticky lg:top-24">
             <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#a98225]">
-              Atendimento SF Imóveis
+              Atendimento Abbud Imóveis
             </p>
             <h2 className="sf-serif mt-3 text-3xl leading-tight text-[#171717]">
               Gostou deste imóvel?
@@ -251,3 +251,4 @@ function Detail() {
     </main>
   );
 }
+

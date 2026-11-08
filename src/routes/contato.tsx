@@ -14,9 +14,9 @@ import { BRAND } from "@/lib/properties";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — SF Imóveis" },
-      { name: "description", content: "Entre em contato com a SF Imóveis e encontre o imóvel ideal com segurança e atendimento personalizado." },
-      { property: "og:title", content: "Contato — SF Imóveis" },
+      { title: "Contato — Abbud Imóveis" },
+      { name: "description", content: "Entre em contato com a Abbud Imóveis e encontre seu próximo imóvel em Barra do Piraí/RJ." },
+      { property: "og:title", content: "Contato — Abbud Imóveis" },
       { property: "og:description", content: "Estamos prontos para ajudar você a encontrar seu próximo imóvel." },
     ],
   }),
@@ -33,7 +33,7 @@ function Contato() {
 
         <div className="sf-container relative grid gap-12 py-16 md:grid-cols-[1fr_0.8fr] md:items-end md:py-24">
           <div className="max-w-2xl">
-            <p className="sf-eyebrow text-[#d9bd7b]">SF IMÓVEIS · ATENDIMENTO</p>
+            <p className="sf-eyebrow text-[#d9bd7b]">ABBUD IMÓVEIS · ATENDIMENTO</p>
             <h1 className="sf-serif mt-6 text-5xl leading-[1.08] tracking-tight text-[#f8f4e9] sm:text-6xl lg:text-7xl">
               Boas escolhas
               <br />
@@ -160,7 +160,7 @@ function Contato() {
         <div id="formulario" className="scroll-mt-24">
           <div className="overflow-hidden rounded-3xl border border-[#e8e0cf] bg-white shadow-[0_24px_70px_rgba(47,37,20,0.09)]">
             <div className="bg-[#171510] px-7 py-7 text-[#f8f4e9] sm:px-9">
-              <p className="sf-eyebrow text-[#d9bd7b]">FALE COM A SF IMÓVEIS</p>
+              <p className="sf-eyebrow text-[#d9bd7b]">FALE COM A ABBUD IMÓVEIS</p>
               <h2 className="sf-serif mt-3 text-3xl sm:text-4xl">Como podemos ajudar?</h2>
               <p className="mt-3 text-sm leading-6 text-white/55">
                 Preencha seus dados e envie sua mensagem. Vamos conversar sobre o que você procura.
@@ -178,10 +178,11 @@ function Contato() {
 
       <section className="border-t border-[#e7decb] bg-[#eee7d8]">
         <div className="sf-container flex flex-col gap-3 py-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
-          <p className="sf-serif text-xl text-[#332b1e]">SF Imóveis <span className="text-[#a98542]">—</span> seu próximo capítulo começa aqui.</p>
-          <p className="text-xs tracking-[0.12em] text-[#817764]">VASSOURAS · RJ</p>
+          <p className="sf-serif text-xl text-[#332b1e]">Abbud Imóveis <span className="text-[#a98542]">—</span> seu próximo capítulo começa aqui.</p>
+          <p className="text-xs tracking-[0.12em] text-[#817764]">BARRA DO PIRAÍ · RJ</p>
         </div>
       </section>
     </main>
   );
 }
+

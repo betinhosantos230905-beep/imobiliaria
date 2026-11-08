@@ -3,7 +3,6 @@ import { Menu, X, ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { BRAND } from "@/lib/properties";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-sf-imoveis.jpg";
 
 const links = [
   { to: "/", label: "Início" },
@@ -19,17 +18,15 @@ export function SiteHeader() {
     <header className="sf-header">
       <div className="sf-container flex h-[76px] items-center justify-between gap-4">
         <Link to="/" className="flex shrink-0 items-center gap-3">
-          <img
-            src={logo}
-            alt="SF Imóveis"
-            className="size-12 rounded-full border border-[#d4a937] object-cover shadow-lg"
-          />
+          <span className="grid size-12 place-items-center rounded-full border border-[#d4a937] bg-[#17130c] shadow-lg">
+            <span className="sf-serif text-xl font-bold text-[#d9bd7b]">A</span>
+          </span>
           <span className="leading-tight">
             <span className="sf-serif block text-2xl font-semibold tracking-wide text-white">
-              SF <span className="sf-gold-text">Imóveis</span>
+              Abbud <span className="sf-gold-text">Imóveis</span>
             </span>
             <span className="mt-1 block text-[9px] uppercase tracking-[0.22em] text-[#d9c99d]">
-              e Assessoria Jurídica
+              Paulo Renato · Corretor
             </span>
           </span>
         </Link>
@@ -45,7 +42,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-
           <Button
             asChild
             variant="gold"
@@ -84,12 +80,7 @@ export function SiteHeader() {
                 {link.label}
               </Link>
             ))}
-
-            <Button
-              asChild
-              variant="gold"
-              className="mt-3 w-full rounded-full"
-            >
+            <Button asChild variant="gold" className="mt-3 w-full rounded-full">
               <Link to="/admin" onClick={() => setOpen(false)}>
                 Área Administrativa
                 <ArrowUpRight className="ml-1 size-4" />
@@ -108,21 +99,21 @@ export function SiteFooter() {
       <div className="sf-container grid gap-10 py-14 md:grid-cols-3">
         <div>
           <p className="sf-serif text-3xl font-semibold">
-            SF <span className="sf-gold-text">Imóveis</span>
+            Abbud <span className="sf-gold-text">Imóveis</span>
           </p>
           <p className="mt-3 max-w-xs text-sm leading-relaxed text-white/60">
-            Aluguel, venda e assessoria jurídica em Vassouras e região.
+            Compra, venda e aluguel de imóveis em Barra do Piraí e região.
           </p>
           <p className="mt-4 text-xs tracking-wider text-[#d4a937]">
             {BRAND.creci}
           </p>
+          <p className="mt-2 text-sm text-white/70">{BRAND.owner}</p>
         </div>
 
         <div className="space-y-2 text-sm text-white/70">
           <p className="mb-4 text-xs uppercase tracking-[0.25em] text-[#d4a937]">
             Contato
           </p>
-          <p>{BRAND.phone}</p>
           <p>WhatsApp {BRAND.whatsappLabel}</p>
           <p>
             <a

@@ -8,12 +8,12 @@ import { Input } from "@/components/ui/input";
 export const Route = createFileRoute("/login")({
   head: () => ({
     meta: [
-      { title: "Entrar — Área administrativa SF Imóveis" },
+      { title: "Entrar — Área administrativa Abbud Imóveis" },
       {
         name: "description",
-        content: "Acesso à área administrativa da SF Imóveis.",
+        content: "Acesso à área administrativa da Abbud Imóveis.",
       },
-      { property: "og:title", content: "Área administrativa — SF Imóveis" },
+      { property: "og:title", content: "Área administrativa — Abbud Imóveis" },
       {
         property: "og:description",
         content: "Acesso à área administrativa.",
@@ -70,9 +70,9 @@ function Login() {
         />
         <div className="absolute inset-0 bg-hero-overlay" />
         <p className="absolute bottom-10 left-10 font-display text-4xl text-primary-foreground">
-          SF Imóveis
+          Abbud Imóveis
           <br />
-          Área do cliente
+          Área administrativa
         </p>
       </div>
 
@@ -83,7 +83,7 @@ function Login() {
         >
           <div className="space-y-2">
             <p className="text-sm font-medium text-primary">
-              SF IMÓVEIS
+              ABBUD IMÓVEIS
             </p>
 
             <h1 className="font-display text-3xl font-semibold">
@@ -135,3 +135,4 @@ function Login() {
     </main>
   );
 }
+
