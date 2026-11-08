@@ -86,7 +86,7 @@ export function PropertyForm({
   const set = <K extends keyof Draft>(k: K, v: Draft[K]) =>
     setD((s) => ({ ...s, [k]: v }));
 
-  async function upload(files: FileList | null) {
+  async function upload(files: File[] | FileList | null) {
     if (!files?.length) return;
 
     setUploading(true);
@@ -319,9 +319,10 @@ export function PropertyForm({
               className="hidden"
               disabled={uploading}
               onChange={(e) => {
-                void upload(e.target.files);
-                e.target.value = "";
-              }}
+                    const files = Array.from(e.target.files ?? []);
+                    e.target.value = "";
+                    void upload(files);
+                  }}
             />
           </label>
         </div>
@@ -355,3 +356,4 @@ export function PropertyForm({
     </div>
   );
 }
+
