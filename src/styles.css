@@ -1,6 +1,5 @@
-@import "tailwindcss" source(none);
+﻿@import "tailwindcss" source(none);
 @import "tw-animate-css";
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap");
 @source "../src";
 
 @custom-variant dark (&:is(.dark *));
@@ -124,7 +123,7 @@
 .sf-eyebrow { font: 600 .75rem/1 "Inter", sans-serif; letter-spacing: .28em; text-transform: uppercase; color: var(--sf-gold); }
 .sf-divider { width: 64px; height: 2px; background: var(--sf-gold-grad); border-radius: 2px; }
  
-/* BotÃµes */
+/* BotÃƒÂµes */
 .sf-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem 1.5rem; border-radius: 999px;
   font: 600 .9rem/1 "Inter", sans-serif; transition: transform .25s var(--sf-ease), box-shadow .25s var(--sf-ease), background .25s; cursor: pointer; text-decoration: none; }
 .sf-btn:hover { transform: translateY(-2px); }
@@ -153,7 +152,7 @@
 @media (min-width: 768px) { .sf-search { grid-template-columns: 1fr auto; align-items: center; } }
 .sf-search input { width: 100%; border: 0; outline: 0; background: transparent; padding: .9rem 1rem; font: 500 1rem "Inter", sans-serif; color: var(--sf-text); }
  
-/* SeÃ§Ãµes */
+/* SeÃƒÂ§ÃƒÂµes */
 .sf-section { padding-block: 4.5rem; }
 .sf-section-dark { background: var(--sf-black); color: #f3efe4; }
 .sf-section-ivory { background: var(--sf-ivory); color: var(--sf-text); }
@@ -161,7 +160,7 @@
 .sf-feature { padding: 1.75rem; border-radius: 18px; background: var(--sf-black-2); border: 1px solid rgba(212,169,55,.22); transition: transform .3s var(--sf-ease), border-color .3s; }
 .sf-feature:hover { transform: translateY(-4px); border-color: rgba(212,169,55,.6); }
  
-/* CartÃ£o de imÃ³vel */
+/* CartÃƒÂ£o de imÃƒÂ³vel */
 .sf-card { display: flex; flex-direction: column; background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--sf-shadow-sm);
   border: 1px solid rgba(0,0,0,.06); transition: transform .35s var(--sf-ease), box-shadow .35s var(--sf-ease); text-decoration: none; color: inherit; }
 .sf-card:hover { transform: translateY(-6px); box-shadow: var(--sf-shadow-md); }
@@ -179,19 +178,19 @@
 .sf-input { width: 100%; padding: .8rem 1rem; border-radius: 12px; border: 1px solid #ddd6c4; background: #fff; font: 500 .95rem "Inter", sans-serif; transition: border-color .2s, box-shadow .2s; }
 .sf-input:focus { outline: 0; border-color: var(--sf-gold); box-shadow: 0 0 0 3px rgba(212,169,55,.22); }
  
-/* AnimaÃ§Ãµes de entrada */
+/* AnimaÃƒÂ§ÃƒÂµes de entrada */
 @keyframes sf-fade-up { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 .sf-reveal { animation: sf-fade-up .8s var(--sf-ease) both; }
 .sf-delay-1 { animation-delay: .12s; } .sf-delay-2 { animation-delay: .24s; } .sf-delay-3 { animation-delay: .36s; }
 @media (prefers-reduced-motion: reduce) { .sf-reveal, .sf-card, .sf-btn, .sf-card-media img { animation: none !important; transition: none !important; } }
  
-/* BotÃ£o flutuante WhatsApp */
+/* BotÃƒÂ£o flutuante WhatsApp */
 .sf-wa-float { position: fixed; right: 1rem; bottom: 1rem; z-index: 60; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center;
   background: #25d366; color: #fff; box-shadow: 0 10px 26px rgba(37,211,102,.45); transition: transform .25s var(--sf-ease); }
 .sf-wa-float:hover { transform: scale(1.08); }
 /* ==========================================
    ABBUD IMOVEIS - IDENTIDADE VISUAL PREMIUM
-   Tema restrito Ã  Ã¡rea pÃºblica
+   Tema restrito ÃƒÂ  ÃƒÂ¡rea pÃƒÂºblica
 ========================================== */
 
 .sf-public-theme {
@@ -241,5 +240,6 @@
 .sf-public-theme .font-sans {
   font-family: "Inter", system-ui, sans-serif;
 }
+
 
 
